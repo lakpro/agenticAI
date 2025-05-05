@@ -1,0 +1,34 @@
+{
+  "name": "Glow & Go Salon",
+  "opening_hours": "Mon-Sat, 9 AM - 7 PM",
+  "services": [
+    {
+      "name": "Haircut",
+      "price": "$25"
+    },
+    {
+      "name": "Hair Coloring",
+      "price": "$60"
+    },
+    {
+      "name": "Facial",
+      "price": "$40"
+    },
+    {
+      "name": "Manicure",
+      "price": "$20"
+    },
+    {
+      "name": "Pedicure",
+      "price": "$25"
+    },
+    {
+      "name": "Bridal Makeup",
+      "price": "$150"
+    }
+  ],
+  "location": "123 Main Street, Springfield",
+  "contact": "+1 555-123-4567",
+  "appointments": "Call or book via website",
+  "website": "https://glowandgo.com"
+}
