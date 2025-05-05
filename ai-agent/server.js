@@ -7,8 +7,9 @@ const app = express();
 const PORT = 3000;
 const getGeminiResponse = require("./gemini.js").getGeminiResponse;
 const autoUpdateKnowledge = require("./updateKnowledge.js");
+const { signup, login, getCurrentUser } = require("./auth");
 
-let knowledge = JSON.parse(fs.readFileSync("./knowledge.json"));
+// let knowledge = JSON.parse(fs.readFileSync("./knowledge.json"));
 
 const rl = readline.createInterface({
   input: process.stdin,
@@ -31,8 +32,12 @@ async function ask(question) {
         if (answer.toLowerCase() === "y") {
           console.log("\nAI: Please wait a moment while I check with someone.");
           try {
-            const res = await axios.post("http://localhost:4000/help", {
-              question,
+            console.log("currentUser", currentUser);
+            const res = await axios.post("http://localhost:4000/request", {
+              userId: currentUser.id,
+              userName: currentUser.username,
+              question: question,
+              timestamp: new Date().toISOString(),
             });
 
             if (res.status !== 200) {
@@ -41,13 +46,17 @@ async function ask(question) {
               );
             }
 
-            const answer = res.data;
+            console.log(
+              "\nAI: I've sent your question to the support team. They will get back to you shortly."
+            );
+
+            // const answer = res.data;
 
             // Update knowledge base with the new answer
-            autoUpdateKnowledge(answer);
+            // autoUpdateKnowledge(answer);
 
             // Ask again with the new knowledge
-            await ask(question);
+            // await ask(question);
           } catch (error) {
             console.log(
               "\nAI: Sorry, we couldn't find the answer at the moment. Please contact us via phone or email."
@@ -68,6 +77,13 @@ async function ask(question) {
   }
 }
 
+// Promisified version of rl.question for async handling
+function inputVal(question) {
+  return new Promise((resolve) => {
+    rl.question(question, resolve);
+  });
+}
+
 function startChat() {
   rl.question("\nYou: ", async (input) => {
     if (input.toLowerCase().includes("exit")) {
@@ -83,8 +99,57 @@ function startChat() {
   });
 }
 
+let currentUser = null;
+
+async function main() {
+  //   const user = getCurrentUser();
+  //   if (user) {
+  //     console.log(`👋 Welcome back, ${user.username}!`);
+  //     // rl.close();
+  //     startChat();
+  //     return;
+  //   }
+  if (currentUser) {
+    console.log(`👋 Welcome back, ${currentUser.username}!`);
+    startChat();
+    return;
+  }
+
+  console.log("📲 1. Login\n📝 2. Signup");
+  const choice = await inputVal("Choose an option (1/2): ");
+
+  if (choice === "1") {
+    const username = await inputVal("Username: ");
+    const password = await inputVal("Password: ");
+    console.log(username, password);
+    const user = login(username, password);
+    if (user) {
+      currentUser = user;
+      console.log(`👋 Welcome back, ${user.username}!`);
+      startChat();
+      return;
+    }
+  } else if (choice === "2") {
+    const username = await inputVal("Username: ");
+    const password = await inputVal("Password: ");
+    console.log(username, password);
+    const user = signup(username, password);
+    if (user) {
+      currentUser = user;
+      console.log(`👋 Welcome onboard, ${user.username}!`);
+      startChat();
+      return;
+    }
+  } else {
+    console.log("❌ Invalid option");
+  }
+
+  main();
+}
+
 // Show intro once
 console.log("Hi, I am your AI assistant. Type 'exit' to quit.");
-startChat();
+main();
+// startChat();
 
 app.listen(PORT);

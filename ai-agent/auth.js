@@ -1,0 +1,59 @@
+const fs = require("fs");
+const bcrypt = require("bcrypt");
+const { v4: uuidv4 } = require("uuid");
+
+const USERS_PATH = "./data/users.json";
+
+function loadUsers() {
+  if (!fs.existsSync(USERS_PATH)) fs.writeFileSync(USERS_PATH, "[]");
+  return JSON.parse(fs.readFileSync(USERS_PATH));
+}
+
+function saveUsers(users) {
+  fs.writeFileSync(USERS_PATH, JSON.stringify(users, null, 2));
+}
+
+function signup(username, password) {
+  const users = loadUsers();
+  if (users.find((u) => u.username === username)) {
+    console.log("❌ Username already exists.");
+    return null;
+  }
+
+  const hashedPassword = bcrypt.hashSync(password, 10);
+  const newUser = {
+    id: uuidv4(),
+    username,
+    password: hashedPassword,
+  };
+  users.push(newUser);
+  saveUsers(users);
+  //   saveSession(newUser.id);
+  console.log("✅ Signup successful!");
+  return newUser;
+}
+
+function login(username, password) {
+  const users = loadUsers();
+  const user = users.find((u) => u.username === username);
+  if (!user || !bcrypt.compareSync(password, user.password)) {
+    console.log("❌ Invalid username or password.");
+    return null;
+  }
+  //   saveSession(user.id);
+  console.log("✅ Login successful!");
+  return user;
+}
+
+// function saveSession(userId) {
+//   fs.writeFileSync(SESSION_PATH, JSON.stringify({ userId }));
+// }
+
+function getCurrentUser() {
+  if (!fs.existsSync(SESSION_PATH)) return null;
+  const { userId } = JSON.parse(fs.readFileSync(SESSION_PATH));
+  const users = loadUsers();
+  return users.find((u) => u.id === userId) || null;
+}
+
+module.exports = { signup, login, getCurrentUser };

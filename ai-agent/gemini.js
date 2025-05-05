@@ -8,7 +8,9 @@ const genAI = new GoogleGenerativeAI(process.env.GEMINI_API_KEY);
 export async function getGeminiResponse(userInput) {
   const model = genAI.getGenerativeModel({ model: "gemini-2.0-flash" });
 
-  const knowledge = JSON.parse(fs.readFileSync("./knowledge.json", "utf-8"));
+  const knowledge = JSON.parse(
+    fs.readFileSync("./data/knowledge.json", "utf-8")
+  );
 
   const prompt = `
 You are a salon chatbot designed to answer user questions based on the provided salon knowledge. Respond in a friendly and helpful tone, using proper English sentences.

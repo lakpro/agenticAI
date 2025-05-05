@@ -1,7 +1,7 @@
 const fs = require("fs");
 
 function autoUpdateKnowledge(updateObj) {
-  const filePath = "./knowledge.json";
+  const filePath = "./data/knowledge.json";
   let knowledge = {};
 
   // Load existing knowledge
