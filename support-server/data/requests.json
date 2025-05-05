@@ -1,0 +1,70 @@
+[
+  {
+    "id": 1000,
+    "userId": "20193e19-4120-431d-a00f-c334854ea1a8",
+    "question": "qwerty",
+    "timestamp": "2025-05-05T15:34:46.840Z",
+    "status": "pending"
+  },
+  {
+    "id": 1001,
+    "userId": "20193e19-4120-431d-a00f-c334854ea1a8",
+    "question": "qwerty",
+    "timestamp": "2025-05-05T15:35:05.302Z",
+    "status": "pending"
+  },
+  {
+    "id": 1002,
+    "userId": "20193e19-4120-431d-a00f-c334854ea1a8",
+    "question": "hola",
+    "timestamp": "2025-05-05T15:38:06.762Z",
+    "status": "pending"
+  },
+  {
+    "id": 1003,
+    "userId": "20193e19-4120-431d-a00f-c334854ea1a8",
+    "question": "hola",
+    "timestamp": "2025-05-05T15:38:51.425Z",
+    "status": "pending"
+  },
+  {
+    "id": 1004,
+    "userId": "20193e19-4120-431d-a00f-c334854ea1a8",
+    "userName": "qwe",
+    "question": "hola",
+    "timestamp": "2025-05-05T15:39:46.990Z",
+    "status": "pending"
+  },
+  {
+    "id": 1005,
+    "userId": "20193e19-4120-431d-a00f-c334854ea1a8",
+    "userName": "qwe",
+    "question": "hola",
+    "timestamp": "2025-05-05T15:39:46.990Z",
+    "status": "resolved"
+  },
+  {
+    "id": 1007,
+    "userId": "20193e19-4120-431d-a00f-c334854ea1a8",
+    "userName": "qwe",
+    "question": "hola",
+    "timestamp": "2025-05-05T15:39:46.990Z",
+    "status": "rejected"
+  },
+  {
+    "id": 1006,
+    "userId": "20193e19-4120-431d-a00f-c334854ea1a8",
+    "userName": "qwe",
+    "question": "hola",
+    "timestamp": "2025-05-05T15:39:46.990Z",
+    "status": "resolved"
+  },
+  {
+    "id": 1008,
+    "userId": "20193e19-4120-431d-a00f-c334854ea1a8",
+    "userName": "qwe",
+    "question": "hola",
+    "timestamp": "2025-05-05T15:39:46.990Z",
+    "status": "rejected"
+  }
+]
