@@ -5,9 +5,13 @@ app.use(express.json());
 const getKnowledgeBaseFormatted =
   require("./gemini.js").getKnowledgeBaseFormatted;
 
+const axios = require("axios");
+
 //cors
 const cors = require("cors");
-app.use(cors((origin = "localhost:5173")));
+// app.use(cors((origin = "localhost:5173")));
+
+app.use(cors());
 
 function extractJsonFromCodeBlock(response) {
   const match = response.match(/```json([\s\S]*?)```/);
@@ -146,6 +150,37 @@ app.post("/help", (req, res) => {
     rl.close();
     console.log("\nThank you. The knowledge base has been updated.");
   });
+});
+
+app.post("/api/addknowledge", async (req, res) => {
+  const info = req.body.info;
+
+  console.log("Info:", info);
+  console.log("\nWe have received a new request to update knowledge base.");
+
+  try {
+    let result = await getKnowledgeBaseFormatted(info);
+    console.log("AI (learned):", result);
+
+    let formattedResult = extractJsonFromCodeBlock(result);
+    if (!formattedResult) {
+      return res.status(400).send({
+        error:
+          "Invalid response from getKnowledgeBaseFormatted.  Expected JSON.",
+      });
+    }
+
+    console.log("Formatted Result:", formattedResult);
+
+    const response = await axios.post("http://localhost:3000/updateknowledge", {
+      info: formattedResult,
+    });
+
+    res.json(response.data);
+  } catch (error) {
+    console.error("Error in /api/addknowledge", error);
+    res.status(500).send({ error: "Internal Server Error" });
+  }
 });
 
 console.log("Welcome to the support server. Listening on port 4000.");

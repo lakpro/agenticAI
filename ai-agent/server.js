@@ -9,12 +9,30 @@ const getGeminiResponse = require("./gemini.js").getGeminiResponse;
 const autoUpdateKnowledge = require("./updateKnowledge.js");
 const { signup, login, getCurrentUser } = require("./auth");
 
+const cors = require("cors");
+// app.use(cors({ origin: "http://localhost:4000" }));
+app.use(cors());
 // let knowledge = JSON.parse(fs.readFileSync("./knowledge.json"));
+
+// Middleware to parse JSON
+app.use(express.json());
 
 const rl = readline.createInterface({
   input: process.stdin,
   output: process.stdout,
   terminal: true,
+});
+
+app.post("/updateknowledge", (req, res) => {
+  const { info } = req.body;
+
+  if (!info) {
+    return res.status(400).send({ error: "Missing 'info' in request body" });
+  }
+
+  console.log("\nWe recieved ", info);
+  autoUpdateKnowledge(info);
+  res.status(200).send("OK");
 });
 
 async function ask(question) {

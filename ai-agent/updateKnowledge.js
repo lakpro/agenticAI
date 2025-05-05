@@ -10,13 +10,9 @@ function autoUpdateKnowledge(updateObj) {
       knowledge = JSON.parse(fs.readFileSync(filePath, "utf-8"));
     } catch (error) {
       console.error("Error parsing existing knowledge.json:", error);
-      // Handle the error, e.g., create a new empty object, or return.
       knowledge = {};
     }
   }
-
-  //   console.log("Type of updateObj:", typeof updateObj);
-  //   console.log("Value of updateObj:", updateObj);
 
   for (const key of Object.keys(updateObj)) {
     const incoming = updateObj[key];

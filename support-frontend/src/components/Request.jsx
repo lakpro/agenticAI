@@ -3,13 +3,16 @@ import RequestCard from "./RequestCard";
 
 export default function Request() {
   const [request, setRequest] = useState([]);
+  const [loading, setLoading] = useState(true);
 
   //fetch all requests from the server
   useEffect(() => {
+    setLoading(true);
     fetch("http://localhost:4000/api/getallrequests")
       .then((response) => response.json())
       .then((data) => setRequest(data))
-      .catch((error) => console.error("Error fetching requests:", error));
+      .catch((error) => console.error("Error fetching requests:", error))
+      .finally(() => setLoading(false));
   }, []);
 
   const [pending, setPending] = useState([]);
@@ -33,33 +36,46 @@ export default function Request() {
         <h1 className="text-2xl font-bold mb-4">Support Requests</h1>
         <div className="bg-white shadow-md rounded-lg p-6 w-full ">
           <h2 className="text-2xl  font-semibold mb-4">Pending Requests</h2>
-          <div className="flex flex-wrap items-center">
-            {pending.length > 0 ? (
-              pending.map((req) => <RequestCard key={req.id} request={req} />)
-            ) : (
-              <p>No pending requests.</p>
-            )}
-          </div>
+          {loading && <p>Loading...</p>}
+          {!loading && (
+            <div className="flex flex-wrap items-center">
+              {pending.length > 0 ? (
+                pending.map((req) => <RequestCard key={req.id} request={req} />)
+              ) : (
+                <p>No pending requests.</p>
+              )}
+            </div>
+          )}
         </div>
         <div className="bg-white shadow-md rounded-lg p-6 w-full mt-4">
           <h2 className="text-2xl  font-semibold mb-4">Resolved Requests</h2>
-          <div className="flex flex-wrap items-center">
-            {resolved.length > 0 ? (
-              resolved.map((req) => <RequestCard key={req.id} request={req} />)
-            ) : (
-              <p>No resolved requests.</p>
-            )}
-          </div>
+          {loading && <p>Loading...</p>}
+          {!loading && (
+            <div className="flex flex-wrap items-center">
+              {resolved.length > 0 ? (
+                resolved.map((req) => (
+                  <RequestCard key={req.id} request={req} />
+                ))
+              ) : (
+                <p>No resolved requests.</p>
+              )}
+            </div>
+          )}
         </div>
         <div className="bg-white shadow-md rounded-lg p-6 w-full mt-4">
           <h2 className="text-2xl  font-semibold mb-4">Rejected Requests</h2>
-          <div className="flex flex-wrap items-center">
-            {rejected.length > 0 ? (
-              rejected.map((req) => <RequestCard key={req.id} request={req} />)
-            ) : (
-              <p>No rejected requests.</p>
-            )}
-          </div>
+          {loading && <p>Loading...</p>}
+          {!loading && (
+            <div className="flex flex-wrap items-center">
+              {rejected.length > 0 ? (
+                rejected.map((req) => (
+                  <RequestCard key={req.id} request={req} />
+                ))
+              ) : (
+                <p>No rejected requests.</p>
+              )}
+            </div>
+          )}
         </div>
       </div>
     </>
