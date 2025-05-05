@@ -25,10 +25,25 @@
     {
       "name": "Bridal Makeup",
       "price": "$150"
+    },
+    {
+      "name": "smoothening",
+      "price": "$100"
+    },
+    {
+      "name": "beard",
+      "price": "$5"
     }
   ],
   "location": "123 Main Street, Springfield",
   "contact": "+1 555-123-4567",
   "appointments": "Call or book via website",
-  "website": "https://glowandgo.com"
+  "website": "https://glowandgo.com",
+  "sunday": "closed",
+  "happy hours": "not available",
+  "pizza": "available",
+  "available": "coke",
+  "water": "available",
+  "whatsapp number": "+91-1234567890",
+  "coffee": "available"
 }
