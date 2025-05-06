@@ -20,22 +20,22 @@
 
 **If the answer is _not found_:**
 
-- **i.** The question is added to the `REQ` queue.  
-- **ii.** A **Supervisor reviews** the pending `REQ` entries.  
-- **iii.** If needed, the Supervisor adds relevant info to the `KB`.  
-- **iv.** `LLM` converts the info into consistent, valid JSON.  
-- **v.** The JSON is sent to the AI Agent to update the `KB`.
+**i.** The question is added to the `REQ` queue.  
+**ii.** A **Supervisor reviews** the pending `REQ` entries.  
+**iii.** If needed, the Supervisor adds relevant info to the `KB`.  
+**iv.** `LLM` converts the info into consistent, valid JSON.  
+**v.** The JSON is sent to the AI Agent to update the `KB`.
 
 ### If the Supervisor clicks **RESOLVE**:
 
-- **vi.** The response is sent back to the AI Agent.  
-- **5.** The AI Agent re-runs the process using `LLM` and the updated `KB`.  
-- **vii.** If an answer is finalized, it is added to `RES`.
+**vi.** The response is sent back to the AI Agent.  
+**5.** The AI Agent re-runs the process using `LLM` and the updated `KB`.  
+**vii.** If an answer is finalized, it is added to `RES`.
 
 ### If the Supervisor clicks **REJECT**:
 
-- **vi.** The rejected question is sent to the AI Agent.  
-- **vii.** The AI Agent adds it to `RES` without generating a new answer.
+**vi.** The rejected question is sent to the AI Agent.  
+**vii.** The AI Agent adds it to `RES` without generating a new answer.
 
 **ix.** If the **user is online**, the resolved answer is sent instantly.  
 **ix.** If the **user is offline**, it is queued and delivered on the next login.
@@ -179,3 +179,10 @@ GEMINI_API_KEY=your_api_key_here
 
 ![Agentic AI v1](https://github.com/user-attachments/assets/ac709057-1ac5-4a5f-9dc6-3ccb1aaf4e60)
 *AgenticAI v1 – Synchronous KB Update and Reply*
+
+---
+## APP WORKING SCREENSHOTS
+![image](https://github.com/user-attachments/assets/b0997b71-604d-4ab2-8dbb-d9a649f1ae4a)
+![image](https://github.com/user-attachments/assets/580c7f93-e991-4a61-806d-0b046c178d16)
+![image](https://github.com/user-attachments/assets/b44df91b-e810-4555-895a-aa240b81f356)
+
