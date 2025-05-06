@@ -37,6 +37,10 @@
     {
       "name": "head massage",
       "price": "available"
+    },
+    {
+      "name": "straightening",
+      "price": "$150"
     }
   ],
   "location": "123 Main Street, Springfield",
@@ -56,5 +60,6 @@
   "we provide jars": "",
   "cofee": "available",
   "mobile": "available",
-  "call": "call at our phone"
+  "call": "call at our phone",
+  "instagram": "username is setia.lakshay"
 }

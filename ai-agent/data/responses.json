@@ -104,7 +104,7 @@
     "answer": "Yes, we provide jars.\n",
     "timestamp": "2025-05-06T12:43:24.635Z",
     "status": "resolved",
-    "delivery": "pending"
+    "delivery": "done"
   },
   {
     "id": 1013,
@@ -113,7 +113,7 @@
     "answer": "Yes, coffee is available at Glow & Go Salon.\n",
     "timestamp": "2025-05-06T12:46:01.012Z",
     "status": "resolved",
-    "delivery": "pending"
+    "delivery": "done"
   },
   {
     "id": 1014,
@@ -122,7 +122,7 @@
     "answer": "Yes, coffee is available.\n",
     "timestamp": "2025-05-06T12:46:10.043Z",
     "status": "resolved",
-    "delivery": "pending"
+    "delivery": "done"
   },
   {
     "id": 1015,
@@ -131,7 +131,7 @@
     "answer": "Yes, coffee is available.\n",
     "timestamp": "2025-05-06T12:46:30.543Z",
     "status": "resolved",
-    "delivery": "pending"
+    "delivery": "done"
   },
   {
     "id": 1016,
@@ -150,5 +150,167 @@
     "timestamp": "2025-05-06T13:03:10.281Z",
     "status": "resolved",
     "delivery": "pending"
+  },
+  {
+    "id": 1018,
+    "userId": "b58c4b8c-ed54-4162-a547-5815a7752b47",
+    "question": "do you hav coffee",
+    "answer": "Yes, coffee is available.\n",
+    "timestamp": "2025-05-06T14:54:17.215Z",
+    "status": "resolved",
+    "delivery": "done"
+  },
+  {
+    "id": 1019,
+    "userId": "b58c4b8c-ed54-4162-a547-5815a7752b47",
+    "question": "do you hav coffee",
+    "answer": "Your question was either incomplete or unclear. Please feel free to ask again with more specific or relevant information.",
+    "timestamp": "2025-05-06T14:55:48.507Z",
+    "status": "rejected",
+    "delivery": "done"
+  },
+  {
+    "id": 1020,
+    "userId": "b58c4b8c-ed54-4162-a547-5815a7752b47",
+    "question": "do you hav coffee",
+    "answer": "Yes, coffee is available at Glow & Go Salon.\n",
+    "timestamp": "2025-05-06T14:57:48.037Z",
+    "status": "resolved",
+    "delivery": "done"
+  },
+  {
+    "id": 1021,
+    "userId": "b58c4b8c-ed54-4162-a547-5815a7752b47",
+    "question": "do you hav coffee",
+    "answer": "Your question was either incomplete or unclear. Please feel free to ask again with more specific or relevant information.",
+    "timestamp": "2025-05-06T14:57:57.301Z",
+    "status": "rejected",
+    "delivery": "done"
+  },
+  {
+    "id": 1022,
+    "userId": "b58c4b8c-ed54-4162-a547-5815a7752b47",
+    "question": "do you have chai?",
+    "answer": "Your question was either incomplete or unclear. Please feel free to ask again with more specific or relevant information.",
+    "timestamp": "2025-05-06T15:01:42.475Z",
+    "status": "rejected",
+    "delivery": "done"
+  },
+  {
+    "id": 1023,
+    "userId": "20193e19-4120-431d-a00f-c334854ea1a8",
+    "question": "hola",
+    "answer": "Your question was either incomplete or unclear. Please feel free to ask again with more specific or relevant information.",
+    "timestamp": "2025-05-06T15:03:14.125Z",
+    "status": "rejected",
+    "delivery": "pending"
+  },
+  {
+    "id": 1024,
+    "userId": "20193e19-4120-431d-a00f-c334854ea1a8",
+    "question": "hola",
+    "answer": "Your question was either incomplete or unclear. Please feel free to ask again with more specific or relevant information.",
+    "timestamp": "2025-05-06T15:05:23.960Z",
+    "status": "rejected",
+    "delivery": "pending"
+  },
+  {
+    "id": 1025,
+    "userId": "b58c4b8c-ed54-4162-a547-5815a7752b47",
+    "question": "qweryy",
+    "answer": "Your question was either incomplete or unclear. Please feel free to ask again with more specific or relevant information.",
+    "timestamp": "2025-05-06T15:13:12.352Z",
+    "status": "rejected",
+    "delivery": "done"
+  },
+  {
+    "id": 1026,
+    "userId": "b58c4b8c-ed54-4162-a547-5815a7752b47",
+    "question": "are you on ig?",
+    "answer": "Yes, our Instagram username is setia.lakshay.\n",
+    "timestamp": "2025-05-06T15:14:31.899Z",
+    "status": "resolved",
+    "delivery": "done"
+  },
+  {
+    "id": 1027,
+    "userId": "20193e19-4120-431d-a00f-c334854ea1a8",
+    "question": "hola",
+    "answer": "Your question was either incomplete or unclear. Please feel free to ask again with more specific or relevant information.",
+    "timestamp": "2025-05-06T15:35:39.756Z",
+    "status": "rejected",
+    "delivery": "pending"
+  },
+  {
+    "id": 1028,
+    "userId": "20193e19-4120-431d-a00f-c334854ea1a8",
+    "question": "facebook",
+    "answer": "Sorry, facebook is not available.\n",
+    "timestamp": "2025-05-06T15:39:53.335Z",
+    "status": "resolved",
+    "delivery": "pending"
+  },
+  {
+    "id": 1029,
+    "userId": "20193e19-4120-431d-a00f-c334854ea1a8",
+    "question": "facebook",
+    "answer": "Sorry, Facebook is not available.\n",
+    "timestamp": "2025-05-06T15:42:18.048Z",
+    "status": "resolved",
+    "delivery": "pending"
+  },
+  {
+    "id": 1030,
+    "userId": "b58c4b8c-ed54-4162-a547-5815a7752b47",
+    "question": "do you hav coffee",
+    "answer": "Your question was either incomplete or unclear. Please feel free to ask again with more specific or relevant information.",
+    "timestamp": "2025-05-06T15:42:26.191Z",
+    "status": "rejected",
+    "delivery": "done"
+  },
+  {
+    "id": 1031,
+    "userId": "b58c4b8c-ed54-4162-a547-5815a7752b47",
+    "question": "do you hav coffee",
+    "answer": "Yes, coffee is available at Glow & Go Salon.\n",
+    "timestamp": "2025-05-06T15:42:42.046Z",
+    "status": "resolved",
+    "delivery": "done"
+  },
+  {
+    "id": 1032,
+    "userId": "b58c4b8c-ed54-4162-a547-5815a7752b47",
+    "question": "do you have chai?",
+    "answer": "Your question was either incomplete or unclear. Please feel free to ask again with more specific or relevant information.",
+    "timestamp": "2025-05-06T15:43:34.728Z",
+    "status": "rejected",
+    "delivery": "done"
+  },
+  {
+    "id": 1033,
+    "userId": "b58c4b8c-ed54-4162-a547-5815a7752b47",
+    "question": "are you on ig?",
+    "answer": "Yes, our Instagram username is setia.lakshay.\n",
+    "timestamp": "2025-05-06T15:43:43.706Z",
+    "status": "resolved",
+    "delivery": "done"
+  },
+  {
+    "id": 1034,
+    "userId": "b58c4b8c-ed54-4162-a547-5815a7752b47",
+    "question": "do you have straightening?",
+    "answer": "Yes, we provide straightening services. The price for straightening is $150.\n",
+    "timestamp": "2025-05-06T15:47:19.219Z",
+    "status": "resolved",
+    "delivery": "done"
+  },
+  {
+    "id": 1035,
+    "userId": "b58c4b8c-ed54-4162-a547-5815a7752b47",
+    "question": "qwerty",
+    "answer": "Your question was either incomplete or unclear. Please feel free to ask again with more specific or relevant information.",
+    "timestamp": "2025-05-06T15:56:17.933Z",
+    "status": "rejected",
+    "delivery": "done"
   }
 ]

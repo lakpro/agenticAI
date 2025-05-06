@@ -16,7 +16,7 @@ function saveUsers(users) {
 function signup(username, password) {
   const users = loadUsers();
   if (users.find((u) => u.username === username)) {
-    console.log("❌ Username already exists.");
+    console.log("\n❌ Username already exists.");
     return null;
   }
 
@@ -29,7 +29,7 @@ function signup(username, password) {
   users.push(newUser);
   saveUsers(users);
   //   saveSession(newUser.id);
-  console.log("✅ Signup successful!");
+  console.log("\n✅ Signup successful!");
   return newUser;
 }
 
@@ -41,7 +41,7 @@ function login(username, password) {
     return null;
   }
   //   saveSession(user.id);
-  console.log("✅ Login successful!");
+  console.log("\n✅ Login successful!");
   return user;
 }
 

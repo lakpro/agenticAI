@@ -8,9 +8,10 @@ const PORT = 3000;
 const getGeminiResponse = require("./gemini.js").getGeminiResponse;
 const autoUpdateKnowledge = require("./updateKnowledge.js");
 const { signup, login, getCurrentUser } = require("./auth");
+const prompt = require("prompt-sync")({ sigint: true });
 
 const cors = require("cors");
-const { error } = require("console");
+// const { error } = require("console");
 // app.use(cors({ origin: "http://localhost:4000" }));
 app.use(cors());
 // let knowledge = JSON.parse(fs.readFileSync("./knowledge.json"));
@@ -24,14 +25,14 @@ const rl = readline.createInterface({
   terminal: true,
 });
 
+let currentUser = null;
+
 app.post("/reject", (req, res) => {
   const { info } = req.body;
 
-  if (!info) {
+  if (!info || !info.userId || !info.question) {
     return res.status(400).send({ error: "Missing 'info' in request body" });
   }
-
-  console.log("\n❌ Reject received:", info);
 
   const { userId, question } = info;
   const timestamp = new Date();
@@ -46,7 +47,7 @@ app.post("/reject", (req, res) => {
       }
     } catch (readError) {
       if (readError.code === "ENOENT") {
-        console.log("responses.json does not exist. Creating new one.");
+        // console.log("\nresponses.json does not exist, creating a new file.");
       } else {
         throw readError;
       }
@@ -80,15 +81,14 @@ app.post("/reject", (req, res) => {
       "utf-8"
     );
 
-    console.log(`Rejected response saved with ID: ${nextResId}`);
-
     // Step 6: Send confirmation
     res.status(200).send({
       status: "rejected",
       message: "Request was rejected and logged successfully.",
     });
+
+    if (currentUser) checkAndUpdateMessages();
   } catch (error) {
-    console.error("Error saving rejected response:", error);
     res.status(500).send({ error: "Internal server error while rejecting." });
   }
 });
@@ -96,15 +96,11 @@ app.post("/reject", (req, res) => {
 app.post("/resolve", async (req, res) => {
   const { info } = req.body;
 
-  if (!info) {
+  if (!info || !info.userId || !info.question) {
     return res.status(400).send({ error: "Missing 'info' in request body" });
   }
 
-  console.log("\nWe recieved ", info);
-
   const result = await getGeminiResponse(info.question);
-
-  console.log("AI response", result);
 
   if (result.toLowerCase().includes("i couldn't find the answer")) {
     return res
@@ -113,7 +109,7 @@ app.post("/resolve", async (req, res) => {
   } else {
     // add to the responses.json
 
-    const { userId, userName, question } = info;
+    const { userId, question } = info;
 
     const timestamp = new Date();
 
@@ -127,7 +123,7 @@ app.post("/resolve", async (req, res) => {
         }
       } catch (readError) {
         if (readError.code === "ENOENT") {
-          console.log("\nresponses.json does not exist, creating a new file.");
+          // console.log("\nresponses.json does not exist, creating a new file.");
         } else {
           throw readError;
         }
@@ -138,8 +134,6 @@ app.post("/resolve", async (req, res) => {
         responseJsonData.length > 0
           ? Math.max(...responseJsonData.map((r) => r.id)) + 1
           : 1000;
-
-      console.log(`Request ID: ${nextResId}`);
 
       // 3. Create the new request object
       const responseData = {
@@ -161,16 +155,17 @@ app.post("/resolve", async (req, res) => {
         JSON.stringify(responseJsonData, null, 2),
         "utf-8"
       );
-      console.log("\nRequest data saved to responses.json.");
 
       // 6. Send a success response
       res.status(200).send({
         status: "accepted",
         message: "Request received and processed successfully.",
       });
+
+      if (currentUser) checkAndUpdateMessages();
     } catch (error) {
       // 7. Handle errors
-      console.error("\nError handling request:", error);
+      // console.error("\nError handling request:", error);
       res
         .status(500)
         .send({ error: "Internal server error.  Failed to process request." });
@@ -185,14 +180,13 @@ app.post("/updateknowledge", (req, res) => {
     return res.status(400).send({ error: "Missing 'info' in request body" });
   }
 
-  console.log("\nWe recieved ", info);
   autoUpdateKnowledge(info);
   res.status(200).send("OK");
 });
 
-async function ask(question) {
+async function ask(question, currentUser) {
   if (!question) return;
-  //   console.log(question);
+
   const response = await getGeminiResponse(question);
   console.log("\nAI: " + response.trim());
 
@@ -205,7 +199,6 @@ async function ask(question) {
         if (answer.toLowerCase() === "y") {
           console.log("\nAI: Please wait a moment while I check with someone.");
           try {
-            console.log("currentUser", currentUser);
             const res = await axios.post("http://localhost:4000/request", {
               userId: currentUser.id,
               userName: currentUser.username,
@@ -222,14 +215,6 @@ async function ask(question) {
             console.log(
               "\nAI: I've sent your question to the support team. They will get back to you shortly."
             );
-
-            // const answer = res.data;
-
-            // Update knowledge base with the new answer
-            // autoUpdateKnowledge(answer);
-
-            // Ask again with the new knowledge
-            // await ask(question);
           } catch (error) {
             console.log(
               "\nAI: Sorry, we couldn't find the answer at the moment. Please contact us via phone or email."
@@ -250,6 +235,51 @@ async function ask(question) {
   }
 }
 
+function checkAndUpdateMessages() {
+  try {
+    const userId = currentUser.id;
+    const rawData = fs.readFileSync("./data/responses.json", "utf-8");
+    let responseJsonData = rawData ? JSON.parse(rawData) : [];
+
+    // Filter messages where delivery is done
+    const userMessages = responseJsonData.filter(
+      (msg) => msg.userId === userId && msg.delivery === "pending"
+    );
+
+    console.log(`\nAI: ${userMessages.length} pending messages!`);
+
+    userMessages.forEach((element) => {
+      console.log(`\nQuestion: ${element.question}`);
+      console.log(`Answer: ${element.answer}`);
+    });
+
+    if (userMessages.length > 0) {
+      // Update delivery to done
+      responseJsonData = responseJsonData.map((msg) => {
+        if (msg.userId === userId && msg.delivery === "pending") {
+          return { ...msg, delivery: "done" };
+        }
+        return msg;
+      });
+
+      fs.writeFileSync(
+        "./data/responses.json",
+        JSON.stringify(responseJsonData, null, 2),
+        "utf-8"
+      );
+    }
+
+    startChat();
+  } catch (error) {
+    if (error.code === "ENOENT") {
+      console.log("responses.json does not exist. Returning empty.");
+      return [];
+    } else {
+      throw error;
+    }
+  }
+}
+
 // Promisified version of rl.question for async handling
 function inputVal(question) {
   return new Promise((resolve) => {
@@ -260,53 +290,37 @@ function inputVal(question) {
 function startChat() {
   rl.question("\nYou: ", async (input) => {
     if (input.toLowerCase().includes("exit")) {
-      rl.close();
+      currentUser = null;
+      main();
       return;
     }
 
-    // readline.moveCursor(process.stdout, 0, -1); // Move cursor up
-    // readline.clearLine(process.stdout, 0); // Clear current line
-
-    await ask(input);
+    await ask(input, currentUser);
 
     startChat();
   });
 }
 
-let currentUser = null;
-
 async function main() {
-  //   const user = getCurrentUser();
-  //   if (user) {
-  //     console.log(`👋 Welcome back, ${user.username}!`);
-  //     // rl.close();
-  //     startChat();
-  //     return;
-  //   }
-  if (currentUser) {
-    console.log(`👋 Welcome back, ${currentUser.username}!`);
-    startChat();
-    return;
-  }
-
   console.log("📲 1. Login\n📝 2. Signup");
   const choice = await inputVal("Choose an option (1/2): ");
 
   if (choice === "1") {
     const username = await inputVal("Username: ");
-    const password = await inputVal("Password: ");
-    // console.log(username, password);
+    const password = prompt("Password: ", { echo: "" });
+
     const user = login(username, password);
     if (user) {
       currentUser = user;
       console.log(`\n👋 Welcome back, ${user.username}!`);
+      checkAndUpdateMessages();
       startChat();
       return;
     }
   } else if (choice === "2") {
     const username = await inputVal("Username: ");
-    const password = await inputVal("Password: ");
-    // console.log(username, password);
+    const password = prompt("Password: ", { echo: "" });
+
     const user = signup(username, password);
     if (user) {
       currentUser = user;
@@ -315,7 +329,7 @@ async function main() {
       return;
     }
   } else {
-    console.log("❌ Invalid option");
+    console.log("\n❌ Invalid option");
   }
 
   main();

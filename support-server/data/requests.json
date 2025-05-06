@@ -18,14 +18,14 @@
     "userId": "20193e19-4120-431d-a00f-c334854ea1a8",
     "question": "hola",
     "timestamp": "2025-05-05T15:38:06.762Z",
-    "status": "pending"
+    "status": "rejected"
   },
   {
     "id": 1003,
     "userId": "20193e19-4120-431d-a00f-c334854ea1a8",
     "question": "hola",
     "timestamp": "2025-05-05T15:38:51.425Z",
-    "status": "pending"
+    "status": "rejected"
   },
   {
     "id": 1004,
@@ -33,7 +33,7 @@
     "userName": "qwe",
     "question": "hola",
     "timestamp": "2025-05-05T15:39:46.990Z",
-    "status": "pending"
+    "status": "rejected"
   },
   {
     "id": 1005,
@@ -73,7 +73,7 @@
     "userName": "qwe",
     "question": "facebook",
     "timestamp": "2025-05-05T19:39:51.406Z",
-    "status": "pending"
+    "status": "resolved"
   },
   {
     "id": 1010,
@@ -113,7 +113,7 @@
     "userName": "lakpro",
     "question": "do you hav coffee",
     "timestamp": "2025-05-06T12:44:20.991Z",
-    "status": "pending"
+    "status": "resolved"
   },
   {
     "id": 1015,
@@ -121,7 +121,7 @@
     "userName": "lakpro",
     "question": "do you hav coffee",
     "timestamp": "2025-05-06T12:44:25.301Z",
-    "status": "resolved"
+    "status": "rejected"
   },
   {
     "id": 1016,
@@ -129,7 +129,7 @@
     "userName": "lakpro",
     "question": "do you hav coffee",
     "timestamp": "2025-05-06T12:44:28.548Z",
-    "status": "resolved"
+    "status": "rejected"
   },
   {
     "id": 1017,
@@ -145,7 +145,7 @@
     "userName": "abc",
     "question": "qwerty",
     "timestamp": "2025-05-06T13:01:00.781Z",
-    "status": "rejected"
+    "status": "pending"
   },
   {
     "id": 1019,
@@ -153,6 +153,46 @@
     "userName": "abc",
     "question": "do you have mobile?",
     "timestamp": "2025-05-06T13:01:16.660Z",
+    "status": "pending"
+  },
+  {
+    "id": 1020,
+    "userId": "b58c4b8c-ed54-4162-a547-5815a7752b47",
+    "userName": "lakpro",
+    "question": "do you have chai?",
+    "timestamp": "2025-05-06T14:58:13.893Z",
+    "status": "rejected"
+  },
+  {
+    "id": 1021,
+    "userId": "b58c4b8c-ed54-4162-a547-5815a7752b47",
+    "userName": "lakpro",
+    "question": "qweryy",
+    "timestamp": "2025-05-06T15:12:16.692Z",
+    "status": "pending"
+  },
+  {
+    "id": 1022,
+    "userId": "b58c4b8c-ed54-4162-a547-5815a7752b47",
+    "userName": "lakpro",
+    "question": "are you on ig?",
+    "timestamp": "2025-05-06T15:12:38.455Z",
     "status": "resolved"
+  },
+  {
+    "id": 1023,
+    "userId": "b58c4b8c-ed54-4162-a547-5815a7752b47",
+    "userName": "lakpro",
+    "question": "do you have straightening?",
+    "timestamp": "2025-05-06T15:44:27.219Z",
+    "status": "resolved"
+  },
+  {
+    "id": 1024,
+    "userId": "b58c4b8c-ed54-4162-a547-5815a7752b47",
+    "userName": "lakpro",
+    "question": "qwerty",
+    "timestamp": "2025-05-06T15:56:06.002Z",
+    "status": "rejected"
   }
 ]

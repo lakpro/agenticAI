@@ -1,7 +1,7 @@
 import React from "react";
 
 export default function Memory() {
-  const [currentStatus, setCurrentStatus] = React.useState("Not Available");
+  const [currentStatus, setCurrentStatus] = React.useState("Add to know more");
   const [currentValue, setCurrentValue] = React.useState("");
   const [loading, setLoading] = React.useState(false);
 
@@ -34,9 +34,11 @@ export default function Memory() {
       console.log("Success:", result);
       setCurrentValue("");
       setCurrentStatus("✅ Added to Knowledge Base");
+      setTimeout(() => setCurrentStatus("Add to know more"), 3000);
     } catch (error) {
       console.error("Error:", error);
       setCurrentStatus("❌ Error adding to Knowledge Base");
+      setTimeout(() => setCurrentStatus("Add to know more"), 3000);
     } finally {
       setLoading(false);
     }
