@@ -20,7 +20,7 @@ function autoUpdateKnowledge(updateObj) {
     if (knowledge.hasOwnProperty(key)) {
       const existing = knowledge[key];
 
-      // Handle array (e.g., services)
+      // Handle array
       if (Array.isArray(existing) && Array.isArray(incoming)) {
         for (const item of incoming) {
           const idx = existing.findIndex(
@@ -29,7 +29,7 @@ function autoUpdateKnowledge(updateObj) {
           if (idx !== -1) {
             existing[idx] = { ...existing[idx], ...item }; // Update existing
           } else {
-            existing.push(item); // Add new
+            existing.push(item);
           }
         }
       }
@@ -37,10 +37,7 @@ function autoUpdateKnowledge(updateObj) {
       // Handle object merge (for nested updates like contact info)
       else if (typeof existing === "object" && typeof incoming === "object") {
         knowledge[key] = { ...existing, ...incoming };
-      }
-
-      // Overwrite primitive (e.g., name, opening_hours)
-      else {
+      } else {
         knowledge[key] = incoming;
       }
     } else {
@@ -56,4 +53,4 @@ function autoUpdateKnowledge(updateObj) {
   }
 }
 
-module.exports = autoUpdateKnowledge;
+module.exports = { autoUpdateKnowledge };

@@ -86,7 +86,7 @@
     "answer": "Your question was either incomplete or unclear. Please feel free to ask again with more specific or relevant information.",
     "timestamp": "2025-05-06T12:41:30.454Z",
     "status": "rejected",
-    "delivery": "pending"
+    "delivery": "done"
   },
   {
     "id": 1011,
@@ -95,7 +95,7 @@
     "answer": "Your question was either incomplete or unclear. Please feel free to ask again with more specific or relevant information.",
     "timestamp": "2025-05-06T12:42:39.545Z",
     "status": "rejected",
-    "delivery": "pending"
+    "delivery": "done"
   },
   {
     "id": 1012,
@@ -203,7 +203,7 @@
     "answer": "Your question was either incomplete or unclear. Please feel free to ask again with more specific or relevant information.",
     "timestamp": "2025-05-06T15:03:14.125Z",
     "status": "rejected",
-    "delivery": "pending"
+    "delivery": "done"
   },
   {
     "id": 1024,
@@ -212,7 +212,7 @@
     "answer": "Your question was either incomplete or unclear. Please feel free to ask again with more specific or relevant information.",
     "timestamp": "2025-05-06T15:05:23.960Z",
     "status": "rejected",
-    "delivery": "pending"
+    "delivery": "done"
   },
   {
     "id": 1025,
@@ -239,7 +239,7 @@
     "answer": "Your question was either incomplete or unclear. Please feel free to ask again with more specific or relevant information.",
     "timestamp": "2025-05-06T15:35:39.756Z",
     "status": "rejected",
-    "delivery": "pending"
+    "delivery": "done"
   },
   {
     "id": 1028,
@@ -248,7 +248,7 @@
     "answer": "Sorry, facebook is not available.\n",
     "timestamp": "2025-05-06T15:39:53.335Z",
     "status": "resolved",
-    "delivery": "pending"
+    "delivery": "done"
   },
   {
     "id": 1029,
@@ -257,7 +257,7 @@
     "answer": "Sorry, Facebook is not available.\n",
     "timestamp": "2025-05-06T15:42:18.048Z",
     "status": "resolved",
-    "delivery": "pending"
+    "delivery": "done"
   },
   {
     "id": 1030,
@@ -310,6 +310,258 @@
     "question": "qwerty",
     "answer": "Your question was either incomplete or unclear. Please feel free to ask again with more specific or relevant information.",
     "timestamp": "2025-05-06T15:56:17.933Z",
+    "status": "rejected",
+    "delivery": "done"
+  },
+  {
+    "id": 1036,
+    "userId": "20193e19-4120-431d-a00f-c334854ea1a8",
+    "question": "do you provide coffee?",
+    "answer": "Yes, coffee is available at Glow & Go Salon.\n",
+    "timestamp": "2025-05-06T21:35:38.534Z",
+    "status": "resolved",
+    "delivery": "done"
+  },
+  {
+    "id": 1037,
+    "userId": "20193e19-4120-431d-a00f-c334854ea1a8",
+    "question": "do you provide coffee?",
+    "answer": "Yes, coffee is available at Glow & Go Salon.\n",
+    "timestamp": "2025-05-06T21:38:34.784Z",
+    "status": "resolved",
+    "delivery": "done"
+  },
+  {
+    "id": 1038,
+    "userId": "20193e19-4120-431d-a00f-c334854ea1a8",
+    "question": "do you provide coffee?",
+    "answer": "Yes, coffee is available at Glow & Go Salon.\n",
+    "timestamp": "2025-05-06T21:39:35.407Z",
+    "status": "resolved",
+    "delivery": "done"
+  },
+  {
+    "id": 1039,
+    "userId": "b58c4b8c-ed54-4162-a547-5815a7752b47",
+    "question": "are you on ig?",
+    "answer": "Yes, we are on Instagram! You can find us at cute_n_cuts.\n",
+    "timestamp": "2025-05-06T21:40:36.776Z",
+    "status": "resolved",
+    "delivery": "done"
+  },
+  {
+    "id": 1040,
+    "userId": "b58c4b8c-ed54-4162-a547-5815a7752b47",
+    "question": "do you have straightening?",
+    "answer": "Yes, we offer straightening services. The price is $150. Would you like to book an appointment? You can call us or book via our website: https://glowandgo.com.\n",
+    "timestamp": "2025-05-06T21:54:20.910Z",
+    "status": "resolved",
+    "delivery": "done"
+  },
+  {
+    "id": 1041,
+    "userId": "20193e19-4120-431d-a00f-c334854ea1a8",
+    "question": "dummy request",
+    "answer": "Your question was either incomplete or unclear...",
+    "timestamp": "2025-05-06T21:58:05.219Z",
+    "status": "rejected",
+    "delivery": "done"
+  },
+  {
+    "id": 1042,
+    "userId": "b58c4b8c-ed54-4162-a547-5815a7752b47",
+    "question": "qweryy",
+    "answer": "Your question was either incomplete or unclear...",
+    "timestamp": "2025-05-06T21:59:43.851Z",
+    "status": "rejected",
+    "delivery": "done"
+  },
+  {
+    "id": 1043,
+    "userId": "b58c4b8c-ed54-4162-a547-5815a7752b47",
+    "question": "qweryy",
+    "answer": "Your question was either incomplete or unclear...",
+    "timestamp": "2025-05-06T21:59:44.335Z",
+    "status": "rejected",
+    "delivery": "done"
+  },
+  {
+    "id": 1044,
+    "userId": "b58c4b8c-ed54-4162-a547-5815a7752b47",
+    "question": "are you on ig?",
+    "answer": "Yes, our Instagram handle is cute_n_cuts.\n",
+    "timestamp": "2025-05-06T22:00:14.520Z",
+    "status": "resolved",
+    "delivery": "done"
+  },
+  {
+    "id": 1045,
+    "userId": "b58c4b8c-ed54-4162-a547-5815a7752b47",
+    "question": "qwerty",
+    "answer": "Your question was either incomplete or unclear...",
+    "timestamp": "2025-05-06T22:00:21.842Z",
+    "status": "rejected",
+    "delivery": "done"
+  },
+  {
+    "id": 1046,
+    "userId": "b58c4b8c-ed54-4162-a547-5815a7752b47",
+    "question": "do you have straightening?",
+    "answer": "Yes, we offer straightening services. The price for straightening is $150.\n",
+    "timestamp": "2025-05-06T22:03:07.158Z",
+    "status": "resolved",
+    "delivery": "done"
+  },
+  {
+    "id": 1047,
+    "userId": "b58c4b8c-ed54-4162-a547-5815a7752b47",
+    "question": "demo",
+    "answer": "Your question was either incomplete or unclear...",
+    "timestamp": "2025-05-06T22:03:22.738Z",
+    "status": "rejected",
+    "delivery": "done"
+  },
+  {
+    "id": 1048,
+    "userId": "b58c4b8c-ed54-4162-a547-5815a7752b47",
+    "question": "demo",
+    "answer": "Your question was either incomplete or unclear...",
+    "timestamp": "2025-05-06T22:04:24.145Z",
+    "status": "rejected",
+    "delivery": "done"
+  },
+  {
+    "id": 1049,
+    "userId": "b58c4b8c-ed54-4162-a547-5815a7752b47",
+    "question": "qwerty",
+    "answer": "Your question was either incomplete or unclear...",
+    "timestamp": "2025-05-06T22:04:35.235Z",
+    "status": "rejected",
+    "delivery": "done"
+  },
+  {
+    "id": 1050,
+    "userId": "b58c4b8c-ed54-4162-a547-5815a7752b47",
+    "question": "demo",
+    "answer": "Your question was either incomplete or unclear...",
+    "timestamp": "2025-05-06T22:05:47.371Z",
+    "status": "rejected",
+    "delivery": "done"
+  },
+  {
+    "id": 1051,
+    "userId": "b58c4b8c-ed54-4162-a547-5815a7752b47",
+    "question": "qwe",
+    "answer": "Your question was either incomplete or unclear...",
+    "timestamp": "2025-05-06T22:07:32.575Z",
+    "status": "rejected",
+    "delivery": "done"
+  },
+  {
+    "id": 1052,
+    "userId": "b58c4b8c-ed54-4162-a547-5815a7752b47",
+    "question": "get me a pizza",
+    "answer": "I am sorry, pizza is unavailable.\n",
+    "timestamp": "2025-05-06T22:13:31.969Z",
+    "status": "resolved",
+    "delivery": "done"
+  },
+  {
+    "id": 1053,
+    "userId": "b58c4b8c-ed54-4162-a547-5815a7752b47",
+    "question": "qweqe",
+    "answer": "Your question was either incomplete or unclear...",
+    "timestamp": "2025-05-06T22:15:26.211Z",
+    "status": "rejected",
+    "delivery": "done"
+  },
+  {
+    "id": 1054,
+    "userId": "b58c4b8c-ed54-4162-a547-5815a7752b47",
+    "question": "qwe",
+    "answer": "Your question was either incomplete or unclear...",
+    "timestamp": "2025-05-06T22:17:37.883Z",
+    "status": "rejected",
+    "delivery": "done"
+  },
+  {
+    "id": 1055,
+    "userId": "b58c4b8c-ed54-4162-a547-5815a7752b47",
+    "question": "qwe",
+    "answer": "Your question was either incomplete or unclear...",
+    "timestamp": "2025-05-06T22:19:11.495Z",
+    "status": "rejected",
+    "delivery": "done"
+  },
+  {
+    "id": 1056,
+    "userId": "b58c4b8c-ed54-4162-a547-5815a7752b47",
+    "question": "qwe",
+    "answer": "Your question was either incomplete or unclear...",
+    "timestamp": "2025-05-06T22:20:53.797Z",
+    "status": "rejected",
+    "delivery": "done"
+  },
+  {
+    "id": 1057,
+    "userId": "b58c4b8c-ed54-4162-a547-5815a7752b47",
+    "question": "qwe",
+    "answer": "Your question was either incomplete or unclear...",
+    "timestamp": "2025-05-06T22:24:56.934Z",
+    "status": "rejected",
+    "delivery": "done"
+  },
+  {
+    "id": 1058,
+    "userId": "b58c4b8c-ed54-4162-a547-5815a7752b47",
+    "question": "qwe",
+    "answer": "Your question was either incomplete or unclear...",
+    "timestamp": "2025-05-06T22:26:00.712Z",
+    "status": "rejected",
+    "delivery": "done"
+  },
+  {
+    "id": 1059,
+    "userId": "b58c4b8c-ed54-4162-a547-5815a7752b47",
+    "question": "do you have ehatsapp",
+    "answer": "Yes, our WhatsApp number is 123456789.\n",
+    "timestamp": "2025-05-06T22:26:36.705Z",
+    "status": "resolved",
+    "delivery": "done"
+  },
+  {
+    "id": 1060,
+    "userId": "b58c4b8c-ed54-4162-a547-5815a7752b47",
+    "question": "qwerty",
+    "answer": "Your question was either incomplete or unclear...",
+    "timestamp": "2025-05-06T22:38:06.347Z",
+    "status": "rejected",
+    "delivery": "done"
+  },
+  {
+    "id": 1061,
+    "userId": "b58c4b8c-ed54-4162-a547-5815a7752b47",
+    "question": "do you have chai?",
+    "answer": "Yes, we do have chai available.\n",
+    "timestamp": "2025-05-06T22:49:46.813Z",
+    "status": "resolved",
+    "delivery": "done"
+  },
+  {
+    "id": 1062,
+    "userId": "95b04cd9-1c84-4565-b48b-c53e62af870b",
+    "question": "can i call you on whatsapp?",
+    "answer": "Yes, you can call us on WhatsApp. Our WhatsApp number is 1234567890.\n",
+    "timestamp": "2025-05-06T23:13:31.370Z",
+    "status": "resolved",
+    "delivery": "done"
+  },
+  {
+    "id": 1063,
+    "userId": "95b04cd9-1c84-4565-b48b-c53e62af870b",
+    "question": "qwerty",
+    "answer": "Your question was either incomplete or unclear...",
+    "timestamp": "2025-05-06T23:14:09.188Z",
     "status": "rejected",
     "delivery": "done"
   }

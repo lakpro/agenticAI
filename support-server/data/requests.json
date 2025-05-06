@@ -169,7 +169,7 @@
     "userName": "lakpro",
     "question": "qweryy",
     "timestamp": "2025-05-06T15:12:16.692Z",
-    "status": "pending"
+    "status": "rejected"
   },
   {
     "id": 1022,
@@ -194,5 +194,173 @@
     "question": "qwerty",
     "timestamp": "2025-05-06T15:56:06.002Z",
     "status": "rejected"
+  },
+  {
+    "id": 1025,
+    "userId": "20193e19-4120-431d-a00f-c334854ea1a8",
+    "userName": "qwe",
+    "question": "do you provide coffee?",
+    "timestamp": "2025-05-06T21:16:36.184Z",
+    "status": "resolved"
+  },
+  {
+    "id": 1026,
+    "userId": "20193e19-4120-431d-a00f-c334854ea1a8",
+    "userName": "qwe",
+    "question": "dummy request",
+    "timestamp": "2025-05-06T21:16:59.634Z",
+    "status": "rejected"
+  },
+  {
+    "id": 1027,
+    "userId": "b58c4b8c-ed54-4162-a547-5815a7752b47",
+    "userName": "lakpro",
+    "question": "demo",
+    "timestamp": "2025-05-06T22:03:17.563Z",
+    "status": "rejected"
+  },
+  {
+    "id": 1028,
+    "userId": "b58c4b8c-ed54-4162-a547-5815a7752b47",
+    "userName": "lakpro",
+    "question": "demo",
+    "timestamp": "2025-05-06T22:04:19.174Z",
+    "status": "rejected"
+  },
+  {
+    "id": 1029,
+    "userId": "b58c4b8c-ed54-4162-a547-5815a7752b47",
+    "userName": "lakpro",
+    "question": "qwerty",
+    "timestamp": "2025-05-06T22:04:30.987Z",
+    "status": "rejected"
+  },
+  {
+    "id": 1030,
+    "userId": "b58c4b8c-ed54-4162-a547-5815a7752b47",
+    "userName": "lakpro",
+    "question": "demo",
+    "timestamp": "2025-05-06T22:05:36.772Z",
+    "status": "rejected"
+  },
+  {
+    "id": 1031,
+    "userId": "b58c4b8c-ed54-4162-a547-5815a7752b47",
+    "userName": "lakpro",
+    "question": "qwe",
+    "timestamp": "2025-05-06T22:07:26.810Z",
+    "status": "rejected"
+  },
+  {
+    "id": 1032,
+    "userId": "b58c4b8c-ed54-4162-a547-5815a7752b47",
+    "userName": "lakpro",
+    "question": "get me a pizza",
+    "timestamp": "2025-05-06T22:13:06.533Z",
+    "status": "resolved"
+  },
+  {
+    "id": 1033,
+    "userId": "b58c4b8c-ed54-4162-a547-5815a7752b47",
+    "userName": "lakpro",
+    "question": "qweqe",
+    "timestamp": "2025-05-06T22:15:22.234Z",
+    "status": "rejected"
+  },
+  {
+    "id": 1034,
+    "userId": "b58c4b8c-ed54-4162-a547-5815a7752b47",
+    "userName": "lakpro",
+    "question": "qwe",
+    "timestamp": "2025-05-06T22:17:29.794Z",
+    "status": "rejected"
+  },
+  {
+    "id": 1035,
+    "userId": "b58c4b8c-ed54-4162-a547-5815a7752b47",
+    "userName": "lakpro",
+    "question": "qwe",
+    "timestamp": "2025-05-06T22:19:07.768Z",
+    "status": "rejected"
+  },
+  {
+    "id": 1036,
+    "userId": "b58c4b8c-ed54-4162-a547-5815a7752b47",
+    "userName": "lakpro",
+    "question": "qwe",
+    "timestamp": "2025-05-06T22:20:51.077Z",
+    "status": "rejected"
+  },
+  {
+    "id": 1037,
+    "userId": "b58c4b8c-ed54-4162-a547-5815a7752b47",
+    "userName": "lakpro",
+    "question": "qwe",
+    "timestamp": "2025-05-06T22:24:51.791Z",
+    "status": "rejected"
+  },
+  {
+    "id": 1038,
+    "userId": "b58c4b8c-ed54-4162-a547-5815a7752b47",
+    "userName": "lakpro",
+    "question": "qwe",
+    "timestamp": "2025-05-06T22:25:53.482Z",
+    "status": "rejected"
+  },
+  {
+    "id": 1039,
+    "userId": "b58c4b8c-ed54-4162-a547-5815a7752b47",
+    "userName": "lakpro",
+    "question": "do you have ehatsapp",
+    "timestamp": "2025-05-06T22:26:18.244Z",
+    "status": "resolved"
+  },
+  {
+    "id": 1040,
+    "userId": "b58c4b8c-ed54-4162-a547-5815a7752b47",
+    "userName": "lakpro",
+    "question": "qwerty",
+    "timestamp": "2025-05-06T22:37:58.155Z",
+    "status": "rejected"
+  },
+  {
+    "id": 1041,
+    "userId": "b58c4b8c-ed54-4162-a547-5815a7752b47",
+    "userName": "lakpro",
+    "question": "are you on facebook",
+    "timestamp": "2025-05-06T22:38:35.406Z",
+    "status": "pending"
+  },
+  {
+    "id": 1042,
+    "userId": "b58c4b8c-ed54-4162-a547-5815a7752b47",
+    "userName": "lakpro",
+    "question": "do you have chai?",
+    "timestamp": "2025-05-06T22:40:05.856Z",
+    "status": "resolved"
+  },
+  {
+    "id": 1043,
+    "userId": "95b04cd9-1c84-4565-b48b-c53e62af870b",
+    "userName": "lakshay",
+    "question": "can i call you on whatsapp?",
+    "timestamp": "2025-05-06T23:13:03.346Z",
+    "status": "resolved"
+  },
+  {
+    "id": 1044,
+    "userId": "95b04cd9-1c84-4565-b48b-c53e62af870b",
+    "userName": "lakshay",
+    "question": "qwerty",
+    "timestamp": "2025-05-06T23:13:45.397Z",
+    "status": "rejected"
+  },
+  {
+    "id": 1045,
+    "userId": "95b04cd9-1c84-4565-b48b-c53e62af870b",
+    "userName": "lakshay",
+    "question": "do you have ice cream",
+    "timestamp": "2025-05-06T23:13:58.222Z",
+    "status": "pending"
   }
 ]

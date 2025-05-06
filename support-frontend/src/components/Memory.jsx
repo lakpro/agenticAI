@@ -11,9 +11,6 @@ export default function Memory() {
     setCurrentStatus("Loading...");
 
     try {
-      //   let data = currentValue;
-      //   data = JSON.parse(data);
-
       const data = { info: currentValue };
 
       console.log("Sending:", data);
@@ -49,18 +46,12 @@ export default function Memory() {
       <div className="flex flex-col items-center justify-center bg-gray-100 p-5 py-10">
         <h1 className="text-2xl font-bold mb-4">Add info to Knowledge Base</h1>
         <div className="bg-white shadow-md rounded-lg p-6 w-full ">
-          {/* <h2 className="text-2xl  font-semibold mb-4">Knowledge Base</h2> */}
           <form
             className="flex flex-col items-center"
             onSubmit={(e) => {
               handleSubmit(e);
             }}
           >
-            {/* <input
-              type="text"
-              placeholder="Enter your question"
-              className="border border-gray-300 rounded-md p-2 mb-4 w-full"
-            /> */}
             <textarea
               placeholder="What do you want to add?"
               className="border border-gray-300 rounded-md p-2 mb-4 w-full h-32"

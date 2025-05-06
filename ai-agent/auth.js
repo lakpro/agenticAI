@@ -28,7 +28,6 @@ function signup(username, password) {
   };
   users.push(newUser);
   saveUsers(users);
-  //   saveSession(newUser.id);
   console.log("\n✅ Signup successful!");
   return newUser;
 }
@@ -40,20 +39,8 @@ function login(username, password) {
     console.log("❌ Invalid username or password.");
     return null;
   }
-  //   saveSession(user.id);
   console.log("\n✅ Login successful!");
   return user;
 }
 
-// function saveSession(userId) {
-//   fs.writeFileSync(SESSION_PATH, JSON.stringify({ userId }));
-// }
-
-function getCurrentUser() {
-  if (!fs.existsSync(SESSION_PATH)) return null;
-  const { userId } = JSON.parse(fs.readFileSync(SESSION_PATH));
-  const users = loadUsers();
-  return users.find((u) => u.id === userId) || null;
-}
-
-module.exports = { signup, login, getCurrentUser };
+module.exports = { signup, login };
