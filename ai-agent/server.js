@@ -10,6 +10,7 @@ const autoUpdateKnowledge = require("./updateKnowledge.js");
 const { signup, login, getCurrentUser } = require("./auth");
 
 const cors = require("cors");
+const { error } = require("console");
 // app.use(cors({ origin: "http://localhost:4000" }));
 app.use(cors());
 // let knowledge = JSON.parse(fs.readFileSync("./knowledge.json"));
@@ -21,6 +22,160 @@ const rl = readline.createInterface({
   input: process.stdin,
   output: process.stdout,
   terminal: true,
+});
+
+app.post("/reject", (req, res) => {
+  const { info } = req.body;
+
+  if (!info) {
+    return res.status(400).send({ error: "Missing 'info' in request body" });
+  }
+
+  console.log("\n❌ Reject received:", info);
+
+  const { userId, question } = info;
+  const timestamp = new Date();
+
+  try {
+    // Step 1: Read existing responses
+    let responseJsonData = [];
+    try {
+      const rawData = fs.readFileSync("./data/responses.json", "utf-8");
+      if (rawData) {
+        responseJsonData = JSON.parse(rawData);
+      }
+    } catch (readError) {
+      if (readError.code === "ENOENT") {
+        console.log("responses.json does not exist. Creating new one.");
+      } else {
+        throw readError;
+      }
+    }
+
+    // Step 2: Generate new response ID
+    const nextResId =
+      responseJsonData.length > 0
+        ? Math.max(...responseJsonData.map((r) => r.id)) + 1
+        : 1000;
+
+    // Step 3: Create rejection entry
+    const rejectedResponse = {
+      id: nextResId,
+      userId,
+      question,
+      answer:
+        "Your question was either incomplete or unclear. Please feel free to ask again with more specific or relevant information.",
+      timestamp,
+      status: "rejected",
+      delivery: "pending",
+    };
+
+    // Step 4: Add to responses
+    responseJsonData.push(rejectedResponse);
+
+    // Step 5: Write to file
+    fs.writeFileSync(
+      "./data/responses.json",
+      JSON.stringify(responseJsonData, null, 2),
+      "utf-8"
+    );
+
+    console.log(`Rejected response saved with ID: ${nextResId}`);
+
+    // Step 6: Send confirmation
+    res.status(200).send({
+      status: "rejected",
+      message: "Request was rejected and logged successfully.",
+    });
+  } catch (error) {
+    console.error("Error saving rejected response:", error);
+    res.status(500).send({ error: "Internal server error while rejecting." });
+  }
+});
+
+app.post("/resolve", async (req, res) => {
+  const { info } = req.body;
+
+  if (!info) {
+    return res.status(400).send({ error: "Missing 'info' in request body" });
+  }
+
+  console.log("\nWe recieved ", info);
+
+  const result = await getGeminiResponse(info.question);
+
+  console.log("AI response", result);
+
+  if (result.toLowerCase().includes("i couldn't find the answer")) {
+    return res
+      .status(200)
+      .send({ status: "rejected", message: "Could not find an answer." });
+  } else {
+    // add to the responses.json
+
+    const { userId, userName, question } = info;
+
+    const timestamp = new Date();
+
+    try {
+      // 1. Read the existing data
+      let responseJsonData = [];
+      try {
+        const rawData = fs.readFileSync("./data/responses.json", "utf-8");
+        if (rawData) {
+          responseJsonData = JSON.parse(rawData);
+        }
+      } catch (readError) {
+        if (readError.code === "ENOENT") {
+          console.log("\nresponses.json does not exist, creating a new file.");
+        } else {
+          throw readError;
+        }
+      }
+
+      // 2. Determine the new request ID
+      const nextResId =
+        responseJsonData.length > 0
+          ? Math.max(...responseJsonData.map((r) => r.id)) + 1
+          : 1000;
+
+      console.log(`Request ID: ${nextResId}`);
+
+      // 3. Create the new request object
+      const responseData = {
+        id: nextResId,
+        userId: userId,
+        question: question,
+        answer: result,
+        timestamp: timestamp,
+        status: "resolved",
+        delivery: "pending",
+      };
+
+      // 4. Add the new request to the array
+      responseJsonData.push(responseData);
+
+      // 5. Write the updated data back to the file
+      fs.writeFileSync(
+        "./data/responses.json",
+        JSON.stringify(responseJsonData, null, 2),
+        "utf-8"
+      );
+      console.log("\nRequest data saved to responses.json.");
+
+      // 6. Send a success response
+      res.status(200).send({
+        status: "accepted",
+        message: "Request received and processed successfully.",
+      });
+    } catch (error) {
+      // 7. Handle errors
+      console.error("\nError handling request:", error);
+      res
+        .status(500)
+        .send({ error: "Internal server error.  Failed to process request." });
+    }
+  }
 });
 
 app.post("/updateknowledge", (req, res) => {
@@ -37,7 +192,7 @@ app.post("/updateknowledge", (req, res) => {
 
 async function ask(question) {
   if (!question) return;
-
+  //   console.log(question);
   const response = await getGeminiResponse(question);
   console.log("\nAI: " + response.trim());
 
@@ -113,6 +268,7 @@ function startChat() {
     // readline.clearLine(process.stdout, 0); // Clear current line
 
     await ask(input);
+
     startChat();
   });
 }
@@ -139,22 +295,22 @@ async function main() {
   if (choice === "1") {
     const username = await inputVal("Username: ");
     const password = await inputVal("Password: ");
-    console.log(username, password);
+    // console.log(username, password);
     const user = login(username, password);
     if (user) {
       currentUser = user;
-      console.log(`👋 Welcome back, ${user.username}!`);
+      console.log(`\n👋 Welcome back, ${user.username}!`);
       startChat();
       return;
     }
   } else if (choice === "2") {
     const username = await inputVal("Username: ");
     const password = await inputVal("Password: ");
-    console.log(username, password);
+    // console.log(username, password);
     const user = signup(username, password);
     if (user) {
       currentUser = user;
-      console.log(`👋 Welcome onboard, ${user.username}!`);
+      console.log(`\n👋 Welcome onboard, ${user.username}!`);
       startChat();
       return;
     }

@@ -33,6 +33,10 @@
     {
       "name": "beard",
       "price": "$5"
+    },
+    {
+      "name": "head massage",
+      "price": "available"
     }
   ],
   "location": "123 Main Street, Springfield",
@@ -45,5 +49,12 @@
   "available": "coke",
   "water": "available",
   "whatsapp number": "+91-1234567899",
-  "facebook": "search on google"
+  "facebook": "not available",
+  "tea": "not available",
+  "dummy_request": "please ignore",
+  "orange": "is available",
+  "we provide jars": "",
+  "cofee": "available",
+  "mobile": "available",
+  "call": "call at our phone"
 }

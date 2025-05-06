@@ -25,9 +25,104 @@ function extractJsonFromCodeBlock(response) {
   return null;
 }
 
+app.put("/api/mark_resolved", (req, res) => {
+  const req_id = req.body.req_id;
+
+  console.log("Marking resolved: ", req_id);
+
+  let requestJsonData = [];
+  try {
+    const rawData = fs.readFileSync("./data/requests.json", "utf-8");
+    requestJsonData = rawData ? JSON.parse(rawData) : [];
+  } catch (readError) {
+    if (readError.code === "ENOENT") {
+      return res.status(404).json({ error: "No requests found." });
+    } else {
+      return res.status(500).json({ error: "Error reading file." });
+    }
+  }
+
+  // Find the request by ID
+  const requestIndex = requestJsonData.findIndex((req) => req.id === req_id);
+
+  if (requestIndex === -1) {
+    return res.status(404).json({ error: "Request not found." });
+  }
+
+  console.log("Resolving request", requestJsonData[requestIndex]);
+
+  // Update status
+  requestJsonData[requestIndex].status = "resolved";
+
+  // Save back to file
+  try {
+    fs.writeFileSync(
+      "./data/requests.json",
+      JSON.stringify(requestJsonData, null, 2)
+    );
+    res.json({
+      message: "Request updated successfully.",
+      request: requestJsonData[requestIndex],
+    });
+  } catch (writeError) {
+    res.status(500).json({ error: "Error writing to file." });
+  }
+});
+
+app.put("/api/mark_rejected", async (req, res) => {
+  const req_id = req.body.req_id;
+  console.log("Marking rejected: ", req_id);
+
+  let requestJsonData = [];
+  try {
+    const rawData = fs.readFileSync("./data/requests.json", "utf-8");
+    requestJsonData = rawData ? JSON.parse(rawData) : [];
+  } catch (readError) {
+    if (readError.code === "ENOENT") {
+      return res.status(404).json({ error: "No requests found." });
+    } else {
+      return res.status(500).json({ error: "Error reading file." });
+    }
+  }
+
+  const requestIndex = requestJsonData.findIndex((req) => req.id === req_id);
+
+  if (requestIndex === -1) {
+    return res.status(404).json({ error: "Request not found." });
+  }
+
+  const rejectedRequest = requestJsonData[requestIndex];
+  rejectedRequest.status = "rejected";
+
+  try {
+    // Step 1: Save the update locally
+    fs.writeFileSync(
+      "./data/requests.json",
+      JSON.stringify(requestJsonData, null, 2)
+    );
+
+    // Step 2: Notify agent on port 3000
+    const agentResponse = await axios.post("http://localhost:3000/reject", {
+      info: rejectedRequest,
+    });
+
+    // Step 3: Respond back
+    res.json({
+      message: "Request marked as rejected and forwarded to agent.",
+      request: rejectedRequest,
+      agentResponse: agentResponse.data,
+    });
+  } catch (error) {
+    console.error("Error updating or notifying:", error);
+    res
+      .status(500)
+      .json({ error: "Failed to update request or notify agent." });
+  }
+});
+
 app.get("/api/getallrequests", (req, res) => {
   // Read the existing data
-  let requestJsonData = []; // Initialize as an empty array
+  let requestJsonData = [];
   try {
     const rawData = fs.readFileSync("./data/requests.json", "utf-8");
     if (rawData) {
@@ -35,11 +130,8 @@ app.get("/api/getallrequests", (req, res) => {
     }
   } catch (readError) {
     if (readError.code === "ENOENT") {
-      // Handle the case where the file doesn't exist yet.
       console.log("\nrequests.json does not exist, creating a new file.");
-      // No need to set requestJsonData, it is already [].
     } else {
-      //For other errors, throw the error
       throw readError;
     }
   }
@@ -48,6 +140,57 @@ app.get("/api/getallrequests", (req, res) => {
 
   // Send the data as a JSON response
   res.json(requestJsonData);
+});
+
+app.post("/api/resolve", async (req, res) => {
+  //   const req_id = req.params.req_id; // Correct way to access route param
+  //   const req_id = 0;
+  const req_id = req.body.req_id;
+
+  console.log("Backend recieved resolve req id: ", req_id);
+
+  try {
+    // Step 1: Read the existing data
+    let requestJsonData = [];
+
+    try {
+      const rawData = fs.readFileSync("./data/requests.json", "utf-8");
+      if (rawData) {
+        requestJsonData = JSON.parse(rawData);
+      }
+    } catch (readError) {
+      if (readError.code === "ENOENT") {
+        console.log("\nrequests.json does not exist, creating a new file.");
+      } else {
+        throw readError;
+      }
+    }
+
+    // Step 2: Find the request by ID
+    const targetRequest = requestJsonData.find((item) => item.id === req_id);
+
+    if (!targetRequest) {
+      return res.status(404).send({ error: "Request ID not found." });
+    }
+
+    console.log("\n✅ Found Request:", targetRequest);
+
+    // Step 3: Send it to the agent
+    const response = await axios.post("http://localhost:3000/resolve", {
+      info: targetRequest,
+    });
+
+    // Step 4: Send success response
+    res.status(200).json({
+      message: "Request forwarded to agent successfully.",
+      agentResponse: response.data,
+    });
+  } catch (error) {
+    console.error("\nError handling request:", error);
+    res.status(500).send({
+      error: "Internal server error. Failed to process request.",
+    });
+  }
 });
 
 app.post("/request", (req, res) => {
@@ -59,10 +202,9 @@ app.post("/request", (req, res) => {
   console.log(`Question: ${question}`);
   console.log(`Timestamp: ${timestamp}`);
 
-  // Use try-catch for file operations
   try {
     // 1. Read the existing data
-    let requestJsonData = []; // Initialize as an empty array
+    let requestJsonData = [];
     try {
       const rawData = fs.readFileSync("./data/requests.json", "utf-8");
       if (rawData) {
@@ -70,11 +212,8 @@ app.post("/request", (req, res) => {
       }
     } catch (readError) {
       if (readError.code === "ENOENT") {
-        // Handle the case where the file doesn't exist yet.
         console.log("\nrequests.json does not exist, creating a new file.");
-        // No need to set requestJsonData, it is already [].
       } else {
-        //For other errors, throw the error
         throw readError;
       }
     }
@@ -104,20 +243,20 @@ app.post("/request", (req, res) => {
     fs.writeFileSync(
       "./data/requests.json",
       JSON.stringify(requestJsonData, null, 2),
-      "utf-8" // Add encoding
+      "utf-8"
     );
     console.log("\nRequest data saved to requests.json.");
 
     // 6. Send a success response
     res
       .status(200)
-      .send({ message: "Request received and processed successfully." }); // Include a message
+      .send({ message: "Request received and processed successfully." });
   } catch (error) {
-    // 7. Handle errors robustly
+    // 7. Handle errors
     console.error("\nError handling request:", error);
     res
       .status(500)
-      .send({ error: "Internal server error.  Failed to process request." }); // Send error response
+      .send({ error: "Internal server error.  Failed to process request." });
   }
 });
 

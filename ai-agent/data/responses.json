@@ -1,0 +1,154 @@
+[
+  {
+    "id": 1000,
+    "userId": "b58c4b8c-ed54-4162-a547-5815a7752b47",
+    "question": "can i get head massage",
+    "answer": "Yes, head massage is available at Glow & Go Salon.\n",
+    "timestamp": "2025-05-06T11:13:33.011Z",
+    "status": "undelivered"
+  },
+  {
+    "id": 1001,
+    "userId": "b58c4b8c-ed54-4162-a547-5815a7752b47",
+    "question": "can i get head massage",
+    "answer": "Yes, head massage is available at Glow & Go Salon.\n",
+    "timestamp": "2025-05-06T11:22:45.277Z",
+    "status": "undelivered"
+  },
+  {
+    "id": 1002,
+    "userId": "b58c4b8c-ed54-4162-a547-5815a7752b47",
+    "question": "can i get head massage",
+    "answer": "Yes, head massage is available.\n",
+    "timestamp": "2025-05-06T11:38:13.902Z",
+    "status": "undelivered"
+  },
+  {
+    "id": 1003,
+    "userId": "b58c4b8c-ed54-4162-a547-5815a7752b47",
+    "question": "can i get head massage",
+    "answer": "Yes, head massage is available at Glow & Go Salon.\n",
+    "timestamp": "2025-05-06T11:40:51.667Z",
+    "status": "undelivered"
+  },
+  {
+    "id": 1004,
+    "userId": "b58c4b8c-ed54-4162-a547-5815a7752b47",
+    "question": "can i get head massage",
+    "answer": "Yes, head massage is available at Glow & Go Salon.\n",
+    "timestamp": "2025-05-06T11:42:14.839Z",
+    "status": "undelivered"
+  },
+  {
+    "id": 1005,
+    "userId": "b58c4b8c-ed54-4162-a547-5815a7752b47",
+    "question": "can i get head massage",
+    "answer": "Yes, head massage is available at Glow & Go Salon.\n",
+    "timestamp": "2025-05-06T11:43:20.335Z",
+    "status": "undelivered"
+  },
+  {
+    "id": 1006,
+    "userId": "b58c4b8c-ed54-4162-a547-5815a7752b47",
+    "question": "do you have orange?",
+    "answer": "Yes, orange is available.\n",
+    "timestamp": "2025-05-06T11:52:59.918Z",
+    "status": "undelivered"
+  },
+  {
+    "id": 1007,
+    "userId": "b58c4b8c-ed54-4162-a547-5815a7752b47",
+    "question": "can i get head massage",
+    "answer": "Yes, head massage is available.\n",
+    "timestamp": "2025-05-06T11:57:14.946Z",
+    "status": "undelivered"
+  },
+  {
+    "id": 1008,
+    "userId": "b58c4b8c-ed54-4162-a547-5815a7752b47",
+    "question": "do you have orange?",
+    "answer": "Yes, orange is available.\n",
+    "timestamp": "2025-05-06T11:57:32.635Z",
+    "status": "undelivered"
+  },
+  {
+    "id": 1009,
+    "userId": "b58c4b8c-ed54-4162-a547-5815a7752b47",
+    "question": "do you ahve tea?",
+    "answer": "No, tea is not available.\n",
+    "timestamp": "2025-05-06T11:57:40.401Z",
+    "status": "undelivered"
+  },
+  {
+    "id": 1010,
+    "userId": "20193e19-4120-431d-a00f-c334854ea1a8",
+    "question": "qwerty",
+    "answer": "Your question was either incomplete or unclear. Please feel free to ask again with more specific or relevant information.",
+    "timestamp": "2025-05-06T12:41:30.454Z",
+    "status": "rejected",
+    "delivery": "pending"
+  },
+  {
+    "id": 1011,
+    "userId": "20193e19-4120-431d-a00f-c334854ea1a8",
+    "question": "qwerty",
+    "answer": "Your question was either incomplete or unclear. Please feel free to ask again with more specific or relevant information.",
+    "timestamp": "2025-05-06T12:42:39.545Z",
+    "status": "rejected",
+    "delivery": "pending"
+  },
+  {
+    "id": 1012,
+    "userId": "b58c4b8c-ed54-4162-a547-5815a7752b47",
+    "question": "do you provide jars?",
+    "answer": "Yes, we provide jars.\n",
+    "timestamp": "2025-05-06T12:43:24.635Z",
+    "status": "resolved",
+    "delivery": "pending"
+  },
+  {
+    "id": 1013,
+    "userId": "b58c4b8c-ed54-4162-a547-5815a7752b47",
+    "question": "do you hav coffee",
+    "answer": "Yes, coffee is available at Glow & Go Salon.\n",
+    "timestamp": "2025-05-06T12:46:01.012Z",
+    "status": "resolved",
+    "delivery": "pending"
+  },
+  {
+    "id": 1014,
+    "userId": "b58c4b8c-ed54-4162-a547-5815a7752b47",
+    "question": "do you hav coffee",
+    "answer": "Yes, coffee is available.\n",
+    "timestamp": "2025-05-06T12:46:10.043Z",
+    "status": "resolved",
+    "delivery": "pending"
+  },
+  {
+    "id": 1015,
+    "userId": "b58c4b8c-ed54-4162-a547-5815a7752b47",
+    "question": "do you hav coffee",
+    "answer": "Yes, coffee is available.\n",
+    "timestamp": "2025-05-06T12:46:30.543Z",
+    "status": "resolved",
+    "delivery": "pending"
+  },
+  {
+    "id": 1016,
+    "userId": "79cb44b2-34a1-430c-a61b-2b4c02f961ef",
+    "question": "qwerty",
+    "answer": "Your question was either incomplete or unclear. Please feel free to ask again with more specific or relevant information.",
+    "timestamp": "2025-05-06T13:02:27.567Z",
+    "status": "rejected",
+    "delivery": "pending"
+  },
+  {
+    "id": 1017,
+    "userId": "79cb44b2-34a1-430c-a61b-2b4c02f961ef",
+    "question": "do you have mobile?",
+    "answer": "Yes, we have mobile available.\n",
+    "timestamp": "2025-05-06T13:03:10.281Z",
+    "status": "resolved",
+    "delivery": "pending"
+  }
+]

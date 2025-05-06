@@ -6,7 +6,7 @@ export default function Memory() {
   const [loading, setLoading] = React.useState(false);
 
   async function handleSubmit(e) {
-    e.preventDefault(); // Always call this first
+    e.preventDefault();
     setLoading(true);
     setCurrentStatus("Loading...");
 
@@ -32,12 +32,13 @@ export default function Memory() {
 
       const result = await response.json();
       console.log("Success:", result);
+      setCurrentValue("");
       setCurrentStatus("✅ Added to Knowledge Base");
     } catch (error) {
       console.error("Error:", error);
       setCurrentStatus("❌ Error adding to Knowledge Base");
     } finally {
-      setLoading(false); // Ensure it's always turned off
+      setLoading(false);
     }
   }
 
