@@ -3,6 +3,17 @@
 **agenticAI** is a human-in-the-loop AI assistant system that leverages the LLM and a structured Knowledge Base to handle and learn from user questions. It supports both synchronous and asynchronous workflows with optional human supervision.
 
 ---
+# ⚠️ In Progress: Asynchronous Agent with RAG (v3)
+
+The knowledge base (KB) is being chunked and converted into embeddings, which are then stored in a vector database.
+
+When a user submits a query, it is also embedded and searched (using Approximate Nearest Neighbor – ANN) within the vector database to retrieve the top-k relevant results.
+
+These results are then augmented with the prompt and user query before being passed to the LLM to generate a more accurate final response.
+
+![Agentic AI v3](https://github.com/user-attachments/assets/b79db802-8e8c-4d6a-95ea-825539336e44)
+
+---
 
 # 🚀 Asynchronous Agent (v2)
 
